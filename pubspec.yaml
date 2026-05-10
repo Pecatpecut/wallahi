@@ -1,0 +1,41 @@
+name: project_akhir_pecatpecut
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.10.8
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_dotenv: ^6.0.0
+  image_picker: ^1.2.1
+  provider: ^6.0.5
+  get: ^4.6.6
+  supabase_flutter: ^2.12.2
+  url_launcher: ^6.2.5
+  intl: ^0.18.1
+  fl_chart: ^0.68.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.1
+
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/images/logo.jpg"
+  min_sdk_android: 21
+  adaptive_icon_background: "#177A47"
+  adaptive_icon_foreground: "assets/images/logo.jpg"
+  web:
+    generate: false
+  
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - .env
