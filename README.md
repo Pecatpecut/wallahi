@@ -97,12 +97,11 @@ Data disimpan secara real-time di **Supabase** (PostgreSQL), termasuk tabel `use
 | `StatusBadge` | Label status berwarna (pending, approved, expired, dll) |
 | `PremiumProductTile` | Tile produk di halaman katalog |
 | `PremiumOrderCard` | Card order dengan progress bar masa aktif |
-| `PlanCard` | Card pemilihan varian/paket |
 | `AppCard` | Container card umum dengan warna adaptif |
-| `CheckoutItemCard` | Ringkasan produk di halaman checkout |
 | `SectionHeader` | Header section dengan tombol "View All" opsional |
 | `Space` | Helper jarak vertikal/horizontal konsisten |
 | `SearchInput` | Input pencarian reusable |
+| `NoEmojiFormatter` | Input formatter untuk memblokir karakter emoji |
 
 ---
 
@@ -127,13 +126,16 @@ Digunakan untuk menampilkan grafik batang (bar chart) pendapatan bulanan di **Ad
 - Tooltip interaktif saat batang disentuh
 - Animasi highlight saat batang dipilih
 
-
-### 4. `provider`
-Digunakan sebagai state management untuk fitur **dark/light mode** melalui `ThemeProvider` (extends `ChangeNotifier`). Memungkinkan perubahan tema berdampak ke seluruh halaman secara instan tanpa rebuild manual.
+### 4. `get` (GetX)
+Digunakan sebagai state management untuk fitur **dark/light mode** melalui `ThemeController` (extends `GetxController`). Menggunakan observable (`obs`) sehingga perubahan tema berdampak ke seluruh halaman secara reaktif melalui `Obx` tanpa rebuild manual. `ThemeController` didaftarkan di `main.dart` menggunakan `Get.put()` dan diakses dari mana saja via `Get.find<ThemeController>()`.
 
 ### 5. `intl`
 Digunakan untuk:
 - **Format mata uang** Rupiah (`NumberFormat.currency`) di Admin Dashboard
+- **Format tanggal** lokal Indonesia (`initializeDateFormatting('id_ID')`) di `main.dart`
+
+### 6. `flutter_dotenv`
+Digunakan untuk memuat konfigurasi sensitif dari file `.env`, seperti `SUPABASE_URL` dan `SUPABASE_ANON_KEY`, agar tidak di-hardcode langsung di dalam kode sumber. Diakses melalui `AppConstants.supabaseUrl` dan `AppConstants.supabaseAnonKey`.
 
 ---
 
@@ -145,7 +147,7 @@ lib/
 │   ├── constants.dart 
 │   ├── routes.dart 
 │   ├── theme.dart
-│   └── theme_provider.dart
+│   └── theme_controller.dart
 │
 ├── features/
 │   ├── auth/
@@ -189,26 +191,19 @@ lib/
 │
 ├── widgets/
 │   ├── buttons/primary_button.dart
-│   ├── inputs/search_input.dart
+│   ├── inputs/
+│   │   ├── no_emoji_formatter.dart
+│   │   └── search_input.dart
 │   ├── navbar/bottom_navbar.dart
 │   ├── shared/
 │   │   ├── empty_state.dart
 │   │   ├── section_header.dart
-│   │   ├── section_title.dart
 │   │   ├── spacing.dart
 │   │   └── status_badge.dart
 │   └── cards/
-│       ├── admin_menu_card.dart
 │       ├── app_card.dart
-│       ├── app_logo.dart
-│       ├── checkout_item_card.dart
-│       ├── info_item.dart
-│       ├── menu_item.dart
 │       ├── order_card.dart
-│       ├── payment_card.dart
-│       ├── plan_card.dart
-│       ├── premium_product_tile.dart
-│       └── product_card.dart
+│       └── premium_product_tile.dart
 │
 └── main.dart
 ```
