@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-/// ✅ GetX replacement untuk ThemeProvider
-/// Gunakan Get.find<ThemeController>() untuk akses dari mana saja
 class ThemeController extends GetxController {
-  final _isDark = true.obs; // observable bool, default dark
+  final _isDark = true.obs;
 
   bool get isDarkMode => _isDark.value;
 

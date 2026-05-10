@@ -18,7 +18,6 @@ class _AdminGaransiPageState extends State<AdminGaransiPage>
   String selectedFilter = "all";
   String searchQuery = "";
 
-  // ✅ Warna status konsisten di seluruh halaman
   final Map<String, Color> _statusColor = {
     "pending":     const Color(0xFFEF9F27),
     "in_progress": const Color(0xFFAFA9EC),
@@ -32,7 +31,6 @@ class _AdminGaransiPageState extends State<AdminGaransiPage>
     "rejected":    "Rejected",
   };
 
-  // ✅ Animasi fade+slide identik dengan semua halaman lain
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -63,7 +61,6 @@ class _AdminGaransiPageState extends State<AdminGaransiPage>
     super.dispose();
   }
 
-  // ✅ Backend tidak diubah
   Future<void> _fetch() async {
     try {
       final data = await _service.getClaims();
@@ -80,7 +77,6 @@ class _AdminGaransiPageState extends State<AdminGaransiPage>
     }
   }
 
-  // ✅ Logic filter tidak diubah — tambah search by title
   List get filteredClaims {
     return claims.where((c) {
       final statusMatch =
@@ -657,7 +653,7 @@ class _AdminGaransiPageState extends State<AdminGaransiPage>
                 ],
               ),
 
-              // ✅ Action button — gradient konsisten
+              // Action button
               GestureDetector(
                 onTap: () => Navigator.pushNamed(
                   context,

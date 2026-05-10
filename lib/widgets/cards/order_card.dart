@@ -30,14 +30,13 @@ class PremiumOrderCard extends StatelessWidget {
 
     final isApproved = status == 'approved';
     final isPending = status == 'pending';
-    final isRejected = status == 'rejected'; // ✅ Tambah rejected
+    final isRejected = status == 'rejected'; 
     final isExpired = isApproved && remaining == 0;
     final isActive = isApproved && remaining > 0;
 
     double progress = duration > 0 ? (remaining / duration) : 0;
     if (progress < 0) progress = 0;
 
-    // ✅ Warna & label dinamis per status termasuk rejected
     final Color statusColor = isActive
         ? Colors.green
         : isPending
@@ -79,7 +78,6 @@ class PremiumOrderCard extends StatelessWidget {
             end: Alignment.bottomRight,
           ),
           border: Border.all(
-            // ✅ Border merah tipis jika rejected agar mencolok
             color: isRejected
                 ? Colors.grey.withValues(alpha: 0.3)
                 : isDark
@@ -99,8 +97,6 @@ class PremiumOrderCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
-            // ✅ Banner merah di atas card jika rejected
             if (isRejected)
               Container(
                 width: double.infinity,
@@ -137,7 +133,6 @@ class PremiumOrderCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  // ── Baris atas: thumbnail + info + badge
                   Row(
                     children: [
                       // Thumbnail
@@ -160,7 +155,6 @@ class PremiumOrderCard extends StatelessWidget {
                         child: imageUrl != null &&
                                 imageUrl.toString().isNotEmpty
                             ? ColorFiltered(
-                                // ✅ Grayscale thumbnail jika rejected
                                 colorFilter: isRejected
                                     ? const ColorFilter.matrix([
                                         0.2126, 0.7152, 0.0722, 0, 0,
@@ -203,7 +197,6 @@ class PremiumOrderCard extends StatelessWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
-                                // ✅ Teks sedikit redup jika rejected
                                 color: isRejected
                                     ? theme.colorScheme.onSurface
                                         .withValues(alpha: 0.5)
@@ -268,7 +261,6 @@ class PremiumOrderCard extends StatelessWidget {
                     ],
                   ),
 
-                  // ── Sembunyikan progress bar jika rejected
                   if (!isRejected) ...[
                     const SizedBox(height: 14),
 
@@ -368,7 +360,6 @@ class PremiumOrderCard extends StatelessWidget {
                     ],
                   ],
 
-                  // ✅ Tombol hubungi support jika rejected
                   if (isRejected) ...[
                     const SizedBox(height: 12),
                     GestureDetector(

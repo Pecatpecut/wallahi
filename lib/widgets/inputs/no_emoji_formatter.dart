@@ -1,14 +1,11 @@
 import 'package:flutter/services.dart';
 
-/// ✅ FIX: FilteringTextInputFormatter untuk mencegah input emoji
-/// Gunakan di semua TextField yang tidak boleh menerima emoji
 class NoEmojiFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    // Filter karakter emoji (unicode range emoji)
     final filtered = newValue.text.replaceAll(
       RegExp(
         r'[\u{1F600}-\u{1F64F}'

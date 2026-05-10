@@ -20,7 +20,7 @@ class RulesPage extends StatelessWidget {
         "Wajib mengikuti semua aturan yang berlaku",
         "Garansi berlaku sesuai ketentuan yang tertera",
       ],
-      "bulletChar": null, // pakai nomor
+      "bulletChar": null,
     },
     {
       "icon": Icons.info_outline,
@@ -48,7 +48,7 @@ class RulesPage extends StatelessWidget {
         "Pelanggaran aturan dapat menyebabkan akun diblokir permanen",
         "Kami tidak bertanggung jawab atas kelalaian yang dilakukan user",
       ],
-      "bulletChar": "!", // pakai tanda seru
+      "bulletChar": "!",
     },
   ];
 
@@ -323,7 +323,7 @@ class RulesPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
 
-            // ✅ Accent bar di kiri
+            // Accent bar
             Container(
               width: 4,
               decoration: BoxDecoration(
@@ -510,7 +510,6 @@ class RulesPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                // ✅ Tombol WA langsung
                 GestureDetector(
                   onTap: () async {
                     const phone = "6285349661585";

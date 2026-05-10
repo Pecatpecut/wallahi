@@ -61,7 +61,7 @@ class _GaransiPageState extends State<GaransiPage>
       filteredClaims = data;
       isLoading = false;
     });
-    _animController.forward(); // ✅ animasi mulai setelah data masuk
+    _animController.forward();
   }
 
   void _applyFilter() {
@@ -99,7 +99,6 @@ class _GaransiPageState extends State<GaransiPage>
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          // ✅ Gradient background — sama persis dengan EditProfilePage
           gradient: LinearGradient(
             colors: isDark
                 ? [
@@ -132,7 +131,7 @@ class _GaransiPageState extends State<GaransiPage>
                     child: Column(
                       children: [
                         // ─────────────────────────────
-                        // APPBAR CUSTOM — sama dengan EditProfilePage
+                        // APPBAR CUSTOM
                         // ─────────────────────────────
                         Padding(
                           padding: const EdgeInsets.symmetric(
@@ -217,7 +216,7 @@ class _GaransiPageState extends State<GaransiPage>
   }
 
   // ─────────────────────────────────────
-  // SECTION LABEL — style konsisten
+  // SECTION LABEL
   // ─────────────────────────────────────
   Widget _sectionLabel(String text) {
     final theme = Theme.of(context);
@@ -233,7 +232,7 @@ class _GaransiPageState extends State<GaransiPage>
   }
 
   // ─────────────────────────────────────
-  // STATS — menggunakan glassmorphism card
+  // STATS 
   // ─────────────────────────────────────
   Widget _statsSection(ThemeData theme) {
     return Column(
@@ -253,7 +252,6 @@ class _GaransiPageState extends State<GaransiPage>
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        // ✅ Glass card — sama dengan form card di EditProfilePage
         borderRadius: BorderRadius.circular(22),
         gradient: LinearGradient(
           colors: isDark
@@ -329,7 +327,7 @@ class _GaransiPageState extends State<GaransiPage>
   }
 
   // ─────────────────────────────────────
-  // SEARCH — style input konsisten
+  // SEARCH
   // ─────────────────────────────────────
   Widget _searchSection(ThemeData theme, bool isDark) {
     return TextField(
@@ -427,7 +425,7 @@ class _GaransiPageState extends State<GaransiPage>
   }
 
   // ─────────────────────────────────────
-  // CLAIM CARD — glass card konsisten
+  // CLAIM CARD
   // ─────────────────────────────────────
   Widget _claimCard(Map c, ThemeData theme, bool isDark) {
     final product = c['orders']?['product_name'] ?? "Premium";
@@ -440,7 +438,6 @@ class _GaransiPageState extends State<GaransiPage>
         margin: const EdgeInsets.only(bottom: 14),
         padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
-          // ✅ Glass card identik dengan form card EditProfilePage
           borderRadius: BorderRadius.circular(28),
           gradient: LinearGradient(
             colors: isDark
@@ -568,7 +565,6 @@ class _GaransiPageState extends State<GaransiPage>
 
               const SizedBox(width: 8),
 
-                // ✅ Detail button — style dari _button() EditProfilePage
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 14,

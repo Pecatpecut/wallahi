@@ -26,7 +26,6 @@ class _AdminAddProductPageState extends State<AdminAddProductPage>
   Uint8List? imageBytes;
   bool _isSaving = false;
 
-  // ✅ Animasi konsisten dengan seluruh halaman
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -379,7 +378,7 @@ class _AdminAddProductPageState extends State<AdminAddProductPage>
   }
 
   // ────────────────────────────────────────────
-  // IMAGE UPLOAD AREA — konsisten PaymentPage
+  // IMAGE UPLOAD AREA
   // ────────────────────────────────────────────
   Widget _buildImageUpload(ThemeData theme, bool isDark) {
     return GestureDetector(
@@ -481,7 +480,7 @@ class _AdminAddProductPageState extends State<AdminAddProductPage>
   }
 
   // ────────────────────────────────────────────
-  // FORM CARD — nama & deskripsi
+  // FORM CARD
   // ────────────────────────────────────────────
   Widget _buildFormCard(ThemeData theme, bool isDark) {
     return Container(
@@ -515,7 +514,7 @@ class _AdminAddProductPageState extends State<AdminAddProductPage>
   }
 
   // ────────────────────────────────────────────
-  // CATEGORY PICKER — pill selector visual
+  // CATEGORY PICKER
   // ────────────────────────────────────────────
   Widget _buildCategoryPicker(ThemeData theme, bool isDark) {
     return Container(

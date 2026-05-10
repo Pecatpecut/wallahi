@@ -24,8 +24,6 @@ class _AdminSettingPageState extends State<AdminSettingPage>
   int _totalOrders = 0;
   int _totalUsers = 0;
 
-
-  // ✅ Animasi konsisten dengan seluruh halaman
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -123,7 +121,7 @@ class _AdminSettingPageState extends State<AdminSettingPage>
   }  
 
   // ─────────────────────────────────
-  // LOGOUT dengan konfirmasi dialog
+  // LOGOUT
   // ─────────────────────────────────
   Future<void> _logout() async {
     final theme = Theme.of(context);
@@ -633,7 +631,7 @@ class _AdminSettingPageState extends State<AdminSettingPage>
   }
 
   // ────────────────────────────────────────────
-  // STORE CONFIG CARD — glassmorphism + toggles
+  // STORE CONFIG CARD
   // ────────────────────────────────────────────
   Widget _buildConfigCard(
       ThemeData theme, bool isDark, ThemeController themeCtrl) {
@@ -760,7 +758,7 @@ class _AdminSettingPageState extends State<AdminSettingPage>
   }
 
   // ────────────────────────────────────────────
-  // APP INFO CARD — versi, build, dll
+  // APP INFO CARD
   // ────────────────────────────────────────────
   Widget _buildAppInfoCard(ThemeData theme, bool isDark) {
     final infos = [
@@ -957,7 +955,6 @@ class _AdminSettingPageState extends State<AdminSettingPage>
                   Navigator.pop(ctx);
 
                   try {
-                    // Re-authenticate dulu dengan password lama
                     final userEmail = supabase.auth.currentUser?.email ?? '';
                     await supabase.auth.signInWithPassword(
                       email: userEmail,
@@ -1069,7 +1066,7 @@ class _AdminSettingPageState extends State<AdminSettingPage>
   }
 
   // ────────────────────────────────────────────
-  // SECTION LABEL — uppercase konsisten
+  // SECTION LABEL
   // ────────────────────────────────────────────
   Widget _sectionLabel(String text, ThemeData theme) {
     return Text(

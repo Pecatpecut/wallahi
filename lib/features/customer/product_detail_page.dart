@@ -14,8 +14,6 @@ class _ProductDetailPageState extends State<ProductDetailPage>
   late List<Map<String, dynamic>> variants;
   int selectedIndex = 0;
   late Map product;
-
-  // ✅ Animasi konsisten dengan EditProfilePage
   late AnimationController _animController;
   late AnimationController _pulseController;
   late Animation<double> _fadeAnim;
@@ -71,7 +69,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
   }
 
   // ─────────────────────────────────
-  // FORMAT HARGA: 150000 → 150.000
+  // FORMAT HARGA
   // ─────────────────────────────────
   String _formatPrice(dynamic price) {
     if (price == null) return '-';
@@ -259,7 +257,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // HERO SECTION — logo besar + info produk
+  // HERO SECTION
   // ────────────────────────────────────────────
   Widget _buildHeroSection(
     BuildContext context,
@@ -444,7 +442,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // STATS ROW — rating, users, uptime
+  // STATS ROW
   // ────────────────────────────────────────────
   Widget _buildStatsRow(
       BuildContext context, ThemeData theme, bool isDark) {
@@ -519,7 +517,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // VARIANT CARD — glassmorphism + selected glow
+  // VARIANT CARD
   // ────────────────────────────────────────────
   Widget _buildVariantCard(
       BuildContext context, int index, ThemeData theme, bool isDark) {
@@ -820,7 +818,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // SECTION LABEL — uppercase, konsisten Edit
+  // SECTION LABEL
   // ────────────────────────────────────────────
   Widget _sectionLabel(String text, ThemeData theme) {
     return Text(

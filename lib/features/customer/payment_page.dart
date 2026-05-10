@@ -25,7 +25,6 @@ class _PaymentPageState extends State<PaymentPage>
   final orderService = OrderService();
   final supabase = Supabase.instance.client;
 
-  // ✅ Animasi konsisten dengan seluruh halaman
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -70,7 +69,7 @@ class _PaymentPageState extends State<PaymentPage>
   }
 
   // ─────────────────────────────────
-  // FORMAT HARGA: 150000 → 150.000
+  // FORMAT HARGA
   // ─────────────────────────────────
   String _formatPrice(dynamic price) {
     if (price == null) return '-';
@@ -90,7 +89,7 @@ class _PaymentPageState extends State<PaymentPage>
     final picker = ImagePicker();
     final picked = await picker.pickImage(source: ImageSource.gallery);
     if (picked != null) {
-      // ✅ FIX: validasi tipe file
+      
       final ext = picked.name.split('.').last.toLowerCase();
       if (!['jpg', 'jpeg', 'png'].contains(ext)) {
         if (mounted) {
@@ -99,7 +98,7 @@ class _PaymentPageState extends State<PaymentPage>
         return;
       }
       final bytes = await picked.readAsBytes();
-      // ✅ FIX: validasi ukuran file (max 5MB)
+      
       if (bytes.lengthInBytes > 5 * 1024 * 1024) {
         if (mounted) {
           _showSnackBar('Ukuran file maksimal 5MB', isError: true);
@@ -505,7 +504,7 @@ class _PaymentPageState extends State<PaymentPage>
   }
 
   // ────────────────────────────────────────────
-  // STEP INDICATOR — identik CheckoutPage
+  // STEP INDICATOR
   // ────────────────────────────────────────────
   Widget _buildStepIndicator(ThemeData theme, bool isDark) {
     final steps = [
@@ -577,7 +576,7 @@ class _PaymentPageState extends State<PaymentPage>
   }
 
   // ────────────────────────────────────────────
-  // TIMER CARD — dengan urgency color
+  // TIMER CARD 
   // ────────────────────────────────────────────
   Widget _buildTimerCard(
       ThemeData theme, bool isDark, Color timerColor, bool isUrgent) {
@@ -878,7 +877,7 @@ class _PaymentPageState extends State<PaymentPage>
   }
 
   // ────────────────────────────────────────────
-  // SUMMARY CARD — konsisten CheckoutPage
+  // SUMMARY CARD
   // ────────────────────────────────────────────
   Widget _buildSummaryCard(
       ThemeData theme, bool isDark, String title, String price) {
@@ -969,7 +968,7 @@ class _PaymentPageState extends State<PaymentPage>
   }
 
   // ────────────────────────────────────────────
-  // UPLOAD BUKTI — dashed border + preview
+  // UPLOAD BUKTI
   // ────────────────────────────────────────────
   Widget _buildUploadArea(ThemeData theme, bool isDark) {
     return GestureDetector(
@@ -989,8 +988,6 @@ class _PaymentPageState extends State<PaymentPage>
                     ? Colors.white.withValues(alpha: 0.15)
                     : theme.colorScheme.primary.withValues(alpha: 0.25),
             width: 1.0,
-            // Dashed border via custom painter diganti border solid tipis
-            // untuk kompatibilitas — tetap bersih
           ),
         ),
         child: imageBytes != null
@@ -1076,7 +1073,7 @@ class _PaymentPageState extends State<PaymentPage>
   }
 
   // ────────────────────────────────────────────
-  // BOTTOM BAR — konsisten ProductDetail & Checkout
+  // BOTTOM BAR
   // ────────────────────────────────────────────
   Widget _buildBottomBar(
     BuildContext context,
@@ -1209,7 +1206,7 @@ class _PaymentPageState extends State<PaymentPage>
   }
 
   // ────────────────────────────────────────────
-  // SECTION LABEL — uppercase konsisten
+  // SECTION LABEL
   // ────────────────────────────────────────────
   Widget _sectionLabel(String text, ThemeData theme) {
     return Text(

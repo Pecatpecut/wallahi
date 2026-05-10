@@ -158,7 +158,7 @@ class PremiumProductTile extends StatelessWidget {
 
                   const SizedBox(height: 4),
 
-                  // Subtitle (durasi • tipe)
+                  // Subtitle
                   Text(
                     subtitle,
                     style: TextStyle(

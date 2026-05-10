@@ -26,17 +26,17 @@ class ProductService {
     return List<Map<String, dynamic>>.from(await query);
   }
 
-  /// 🔥 UPDATE PRODUCT
+  // UPDATE PRODUCT
 Future<void> updateProduct(String id, Map data) async {
   await supabase.from('products').update(data).eq('id', id);
 }
 
-/// 🔥 DELETE PRODUCT
+// DELETE PRODUCT
 Future<void> deleteProduct(String id) async {
   await supabase.from('products').delete().eq('id', id);
 }
 
-/// 🔥 UPDATE VARIANT
+// UPDATE VARIANT
 Future<void> updateVariant(String id, Map data) async {
   await supabase
       .from('product_variants')
@@ -44,7 +44,7 @@ Future<void> updateVariant(String id, Map data) async {
       .eq('id', id);
 }
 
-/// 🔥 DELETE VARIANT
+// DELETE VARIANT
 Future<void> deleteVariant(String id) async {
   await supabase
       .from('product_variants')

@@ -3,24 +3,24 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class AdminService {
   final supabase = Supabase.instance.client;
 
-  /// 🔥 TOTAL ORDERS
+  // TOTAL ORDERS
   Future<int> getTotalOrders() async {
     final data = await supabase.from('orders').select('id');
     return data.length;
   }
 
-  /// 🔥 TOTAL USERS
+  // TOTAL USERS
   Future<int> getTotalUsers() async {
     final data = await supabase.from('users').select('id');
     return data.length;
   }
 
-  /// 🔥 TOTAL INCOME
+  // TOTAL INCOME
   Future<int> getTotalIncome() async {
     final data = await supabase
         .from('orders')
         .select('price')
-        .eq('status', 'approved'); // ✅ FIX: hanya order approved
+        .eq('status', 'approved');
 
     int total = 0;
     for (var item in data) {
@@ -39,12 +39,12 @@ class AdminService {
   return response.length;
 }
 
-  /// 🔥 INCOME PER BULAN (SIMPLE)
+  // INCOME PER BULAN
   Future<List<int>> getMonthlyIncome() async {
     final data = await supabase
         .from('orders')
         .select('price, created_at')
-        .eq('status', 'approved'); // ✅ FIX: hanya order approved
+        .eq('status', 'approved');
 
     List<int> monthly = List.generate(12, (_) => 0);
 

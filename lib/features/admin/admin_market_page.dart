@@ -20,7 +20,6 @@ class _AdminMarketPageState extends State<AdminMarketPage>
 
   final categories = ["All", "Streaming", "Music", "Study", "Editing"];
 
-  // ✅ Warna per kategori — konsisten di chip + card badge
   final Map<String, Color> _catColor = {
     "Streaming": const Color(0xFFAFA9EC),
     "Music": const Color(0xFF5DCAA5),
@@ -28,7 +27,6 @@ class _AdminMarketPageState extends State<AdminMarketPage>
     "Editing": const Color(0xFFF09595),
   };
 
-  // ✅ Animasi fade+slide — identik dengan halaman lain
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -59,7 +57,6 @@ class _AdminMarketPageState extends State<AdminMarketPage>
     super.dispose();
   }
 
-  // ✅ Backend tidak diubah — sama seperti aslinya
   Future<void> _fetch() async {
     final data = await productService.getProducts();
     if (!mounted) return;
@@ -70,7 +67,6 @@ class _AdminMarketPageState extends State<AdminMarketPage>
     _animController.forward();
   }
 
-  // ✅ Logic filter tidak diubah
   List get filteredProducts {
     return products.where((p) {
       final matchCategory =
@@ -89,7 +85,6 @@ class _AdminMarketPageState extends State<AdminMarketPage>
 
     return Scaffold(
       backgroundColor: isDark ? AppConstants.darkBg1 : Colors.white,
-      // ✅ FAB tetap ada — hanya style dipercantik
       floatingActionButton: _fab(theme, isDark),
       body: Container(
         width: double.infinity,
@@ -161,7 +156,6 @@ class _AdminMarketPageState extends State<AdminMarketPage>
     return GestureDetector(
       onTap: () async {
         await Navigator.pushNamed(context, '/admin-add-product');
-        // ✅ FIX: refresh list produk setelah kembali dari halaman tambah produk
         _fetch();
       },
       child: Container(
@@ -277,7 +271,7 @@ class _AdminMarketPageState extends State<AdminMarketPage>
     );
   }
 
-  // ✅ Search — style identik dengan GaransiPage
+  // Search
   Widget _searchBox(ThemeData theme, bool isDark) {
     return TextField(
       onChanged: (v) => setState(() => searchQuery = v),
@@ -316,7 +310,7 @@ class _AdminMarketPageState extends State<AdminMarketPage>
     );
   }
 
-  // ✅ Chips — dengan warna per kategori
+  // Chips
   Widget _filterChips(ThemeData theme) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -396,7 +390,7 @@ class _AdminMarketPageState extends State<AdminMarketPage>
   }
 
   // ─────────────────────────────────────
-  // PRODUCT CARD — glass card konsisten
+  // PRODUCT CARD
   // ─────────────────────────────────────
   Widget _card(Map p, ThemeData theme, bool isDark) {
     final catCol = _catColor[p['category']] ?? theme.colorScheme.primary;
@@ -556,7 +550,7 @@ class _AdminMarketPageState extends State<AdminMarketPage>
                 Row(
                   children: [
 
-                    // ✅ Tombol detail — gradient button
+                    // Tombol detail
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 14,

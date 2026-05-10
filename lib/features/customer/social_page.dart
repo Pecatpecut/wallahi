@@ -36,7 +36,7 @@ class SocialPage extends StatelessWidget {
           child: Column(
             children: [
 
-              /// 🔥 CUSTOM APPBAR (CONSISTENT)
+              // CUSTOM APPBAR
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 child: Row(
@@ -75,13 +75,13 @@ class SocialPage extends StatelessWidget {
                 ),
               ),
 
-              /// 🔥 CONTENT
+              // CONTENT
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   children: [
 
-                    /// HEADER
+                    // HEADER
                     Text(
                       "Connect With Us",
                       style: TextStyle(
@@ -104,7 +104,7 @@ class SocialPage extends StatelessWidget {
 
                     Space.h20,
 
-                    /// ITEMS
+                    // ITEMS
                     _item(
                       context,
                       icon: Icons.chat,
@@ -140,8 +140,6 @@ class SocialPage extends StatelessWidget {
     );
   }
 
-  /// 🔥 ITEM UPGRADE (INI YANG PALING BERUBAH)
-  /// 🔥 ITEM TANPA URL LAUNCHER
 Widget _item(
   BuildContext context, {
   required IconData icon,
@@ -188,7 +186,7 @@ Widget _item(
 
         const SizedBox(width: 16),
 
-        /// TEXT
+        // TEXT
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -213,7 +211,7 @@ Widget _item(
           ),
         ),
 
-        /// ARROW (tetap ditampilkan biar konsisten tampilan)
+        /// ARROW
         Container(
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(

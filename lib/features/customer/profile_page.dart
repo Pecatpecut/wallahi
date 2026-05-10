@@ -20,7 +20,6 @@ class _ProfilePageState extends State<ProfilePage>
   String _email = "email@example.com";
   bool _isLoading = true;
 
-  // ✅ Animasi konsisten
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -76,7 +75,7 @@ class _ProfilePageState extends State<ProfilePage>
     }
   }
 
-  // ✅ Logout dengan konfirmasi
+  // Logout
   void _logoutDialog(ThemeData theme, bool isDark) {
     showDialog(
       context: context,
@@ -404,7 +403,6 @@ class _ProfilePageState extends State<ProfilePage>
 
                               const SizedBox(height: 16),
 
-                              // ✅ Edit profile button inline
                               GestureDetector(
                                 onTap: () => Navigator.pushNamed(
                                     context, '/edit-profile'),
@@ -461,7 +459,7 @@ class _ProfilePageState extends State<ProfilePage>
                         const SizedBox(height: 20),
 
                         // ─────────────────────────────
-                        // DARK MODE TOGGLE — sebagai menu item
+                        // DARK MODE TOGGLE
                         // ─────────────────────────────
                         _buildToggleItem(
                           icon: isDark
@@ -567,10 +565,10 @@ class _ProfilePageState extends State<ProfilePage>
 
                         const SizedBox(height: 8),
 
-                        // ✅ Version info
+                        // Version info
                         Center(
                           child: Text(
-                            "v1.0.0 • ARNN.APPREM",
+                            "v1.1.0 • ARNN.APPREM",
                             style: TextStyle(
                               fontSize: 11,
                               color: theme.colorScheme.onSurface
@@ -592,7 +590,6 @@ class _ProfilePageState extends State<ProfilePage>
   // WIDGET HELPERS
   // ─────────────────────────────────────
 
-  // ✅ Grup menu dalam satu card
   Widget _menuGroup({
     required ThemeData theme,
     required bool isDark,
@@ -758,7 +755,6 @@ class _ProfilePageState extends State<ProfilePage>
   }
 }
 
-// ✅ Model kecil untuk menu item
 class _MenuItem {
   final IconData icon;
   final String label;

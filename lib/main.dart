@@ -13,7 +13,6 @@ import 'core/routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // ✅ Edge-to-edge: hilangkan putih di navigation bar bawah
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -25,7 +24,6 @@ void main() async {
     ),
   );
 
-  // ✅ Portrait only — kalau mau landscape juga, hapus baris ini
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -33,16 +31,13 @@ void main() async {
 
   await initializeDateFormatting('id_ID', null);
 
-  // Load .env
   await dotenv.load(fileName: ".env");
 
-  // Init Supabase
   await Supabase.initialize(
     url: AppConstants.supabaseUrl,
     anonKey: AppConstants.supabaseAnonKey,
   );
 
-  // Cek sesi user + role
   String initialRoute = '/login';
   final user = Supabase.instance.client.auth.currentUser;
 
@@ -61,7 +56,6 @@ void main() async {
     }
   }
 
-  // ✅ Daftarkan ThemeController ke GetX
   Get.put(ThemeController());
 
   runApp(MyApp(initialRoute: initialRoute));
@@ -77,7 +71,6 @@ class MyApp extends StatelessWidget {
     final themeCtrl = Get.find<ThemeController>();
 
     return Obx(() {
-      // ✅ Obx rebuild otomatis saat theme berubah
       final isDark = themeCtrl.isDarkMode;
 
       SystemChrome.setSystemUIOverlayStyle(

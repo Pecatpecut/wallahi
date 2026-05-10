@@ -27,7 +27,7 @@ class CheckoutItemCard extends StatelessWidget {
       child: Row(
         children: [
 
-          /// 🔥 IMAGE
+          // IMAGE
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
@@ -52,7 +52,7 @@ class CheckoutItemCard extends StatelessWidget {
 
           const SizedBox(width: 12),
 
-          /// 🔥 TEXT
+          // TEXT
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +75,7 @@ class CheckoutItemCard extends StatelessWidget {
             ),
           ),
 
-          /// 🔥 PRICE
+          // PRICE
           Text(
             price,
             style: TextStyle(

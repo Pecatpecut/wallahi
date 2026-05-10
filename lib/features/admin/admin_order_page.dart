@@ -127,7 +127,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
           builder: (ctx, setDialogState) {
             return Dialog(
               backgroundColor: Colors.transparent,
-              // ✅ insetPadding agar dialog tidak terlalu lebar di HP besar
               insetPadding: const EdgeInsets.symmetric(
                   horizontal: 24, vertical: 40),
               child: Container(
@@ -177,7 +176,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
                           ),
                         ),
                         const SizedBox(width: 10),
-                        // ✅ Flexible agar teks tidak overflow
                         Flexible(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -402,7 +400,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
                 ),
               ),
               const SizedBox(height: 6),
-              // ✅ Flexible teks panjang
               Text(
                 "Order ${order['product_name']} akan ditolak.\nTindakan ini tidak bisa dibatalkan.",
                 textAlign: TextAlign.center,
@@ -770,7 +767,7 @@ class _AdminOrderPageState extends State<AdminOrderPage>
   }
 
   // ─────────────────────────────────────
-  // BUILD LIST — ✅ SingleChildScrollView wrapping ListView
+  // BUILD LIST
   // ─────────────────────────────────────
   Widget _buildList(
       List data, String status, ThemeData theme, bool isDark) {
@@ -802,9 +799,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
       );
     }
 
-    // ✅ ListView dengan physics bouncing + shrinkWrap false
-    // Tidak perlu SingleChildScrollView karena ListView sudah scrollable
-    // Key: pastikan padding bawah cukup agar card terakhir tidak terpotong
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.fromLTRB(24, 4, 24, 32),
@@ -814,7 +808,7 @@ class _AdminOrderPageState extends State<AdminOrderPage>
   }
 
   // ─────────────────────────────────────
-  // ORDER CARD — semua Row di-fix overflow
+  // ORDER CARD
   // ─────────────────────────────────────
   Widget _orderCard(Map order, ThemeData theme, bool isDark) {
     final status = order['status'] ?? 'pending';
@@ -851,7 +845,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
           ),
         ],
       ),
-      // ✅ GestureDetector di luar container agar tap area full
       child: InkWell(
         borderRadius: BorderRadius.circular(22),
         onTap: () => Navigator.pushNamed(
@@ -864,7 +857,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
           mainAxisSize: MainAxisSize.min, // ✅ min agar tidak expand berlebihan
           children: [
 
-            // ── Baris atas: icon + nama + badge ──
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -879,7 +871,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
                       size: 16, color: theme.colorScheme.primary),
                 ),
                 const SizedBox(width: 10),
-                // ✅ Expanded agar nama produk tidak push badge keluar
                 Expanded(
                   child: Text(
                     order['product_name'] ?? '-',
@@ -893,15 +884,12 @@ class _AdminOrderPageState extends State<AdminOrderPage>
                   ),
                 ),
                 const SizedBox(width: 8),
-                // ✅ Badge tidak di-Expanded — ukurannya intrinsic
                 _statusBadge(status, theme),
               ],
             ),
 
             const SizedBox(height: 12),
 
-            // ── Info chips: variant + harga ──
-            // ✅ Wrap agar tidak overflow jika teks panjang
             Wrap(
               spacing: 8,
               runSpacing: 6,
@@ -934,7 +922,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
                         .withValues(alpha: 0.35),
                   ),
                   const SizedBox(width: 4),
-                  // ✅ Flexible agar tanggal tidak overflow
                   Flexible(
                     child: Text(
                       _formatOrderDate(order['created_at']),
@@ -950,7 +937,7 @@ class _AdminOrderPageState extends State<AdminOrderPage>
               ),
             ],
 
-            // ── Account email (approved) ──
+            // ── Account email ──
             if (isApproved && order['account_email'] != null) ...[
               const SizedBox(height: 12),
               Divider(
@@ -966,7 +953,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
                       color: theme.colorScheme.onSurface
                           .withValues(alpha: 0.4)),
                   const SizedBox(width: 6),
-                  // ✅ Flexible agar email panjang tidak overflow
                   Flexible(
                     child: Text(
                       order['account_email'],
@@ -982,7 +968,7 @@ class _AdminOrderPageState extends State<AdminOrderPage>
               ),
             ],
 
-            // ── Action buttons (pending only) ──
+            // ── Action buttons  ──
             if (isPending) ...[
               const SizedBox(height: 14),
               Divider(
@@ -991,7 +977,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
                 height: 1,
               ),
               const SizedBox(height: 10),
-              // ✅ Row dengan MainAxisAlignment.end — tombol tidak perlu Expanded
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 mainAxisSize: MainAxisSize.max,
@@ -1392,7 +1377,6 @@ class _AdminOrderPageState extends State<AdminOrderPage>
                 : theme.colorScheme.onSurface.withValues(alpha: 0.45),
           ),
           const SizedBox(width: 5),
-          // ✅ ConstrainedBox agar chip tidak terlalu lebar
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 160),
             child: Text(

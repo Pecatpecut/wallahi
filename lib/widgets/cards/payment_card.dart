@@ -23,7 +23,7 @@ class PaymentCard extends StatelessWidget {
 
           const SizedBox(height: 15),
 
-          /// 🔥 QR IMAGE
+          // QR IMAGE
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
@@ -38,7 +38,7 @@ class PaymentCard extends StatelessWidget {
 
           const SizedBox(height: 15),
 
-          /// 🔥 PRICE
+          // PRICE
           Text(
             amount,
             style: const TextStyle(

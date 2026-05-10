@@ -26,7 +26,6 @@ class _AdminAddVariantPageState extends State<AdminAddVariantPage>
   bool _isSubmitting = false;
   bool _isDeleting = false;
 
-  // ✅ Animasi konsisten dengan seluruh halaman
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -595,7 +594,7 @@ class _AdminAddVariantPageState extends State<AdminAddVariantPage>
   }
 
   // ────────────────────────────────────────────
-  // FORM CARD — glassmorphism konsisten
+  // FORM CARD
   // ────────────────────────────────────────────
   Widget _buildFormCard(ThemeData theme, bool isDark) {
     return Container(
@@ -805,7 +804,7 @@ class _AdminAddVariantPageState extends State<AdminAddVariantPage>
   }
 
   // ────────────────────────────────────────────
-  // PREVIEW CARD — live update saat ketik
+  // PREVIEW CARD
   // ────────────────────────────────────────────
   Widget _buildPreviewCard(ThemeData theme, bool isDark) {
     final typeName = _typeController.text.isNotEmpty
@@ -1053,7 +1052,7 @@ class _AdminAddVariantPageState extends State<AdminAddVariantPage>
   }
 
   // ────────────────────────────────────────────
-  // SECTION LABEL — uppercase konsisten
+  // SECTION LABEL
   // ────────────────────────────────────────────
   Widget _sectionLabel(String text, ThemeData theme) {
     return Text(

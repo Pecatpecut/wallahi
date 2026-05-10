@@ -3,7 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class OrderService {
   final supabase = Supabase.instance.client;
 
-  /// ✅ CREATE ORDER (CLEAN - TANPA IMAGE)
+  // CREATE ORDER 
   Future<void> createOrder({
     required String userId,
     required Map product,
@@ -25,7 +25,7 @@ class OrderService {
     });
   }
 
-  /// ✅ GET ORDERS (JOIN PRODUCTS)
+  // GET ORDERS
   Future<List<Map<String, dynamic>>> getOrders() async {
     final user = supabase.auth.currentUser;
 
@@ -46,7 +46,7 @@ class OrderService {
     return List<Map<String, dynamic>>.from(data);
   }
 
-  /// ✅ ADMIN GET ALL
+  // ADMIN GET ALL
   Future<List<Map<String, dynamic>>> getAllOrders() async {
     final data = await supabase
         .from('orders')
@@ -62,7 +62,7 @@ class OrderService {
     return List<Map<String, dynamic>>.from(data);
   }
 
-  /// ✅ APPROVE ORDER
+  // APPROVE ORDER
   Future<void> approveOrderManual({
     required String orderId,
     required String email,
@@ -112,7 +112,7 @@ class OrderService {
     });
   }
 
-  /// ✅ UPDATE STATUS
+  // UPDATE STATUS
   Future<void> updateOrderStatus(String id, String status) async {
     await supabase
         .from('orders')

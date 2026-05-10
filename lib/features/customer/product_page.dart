@@ -4,7 +4,6 @@ import '../../widgets/navbar/bottom_navbar.dart';
 import '../../widgets/cards/premium_product_tile.dart';
 import '../../services/product_service.dart';
 
-
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
 
@@ -21,7 +20,6 @@ class _ProductPageState extends State<ProductPage>
   List<Map<String, dynamic>> products = [];
   bool isLoading = true;
 
-  // ✅ Animasi konsisten
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;

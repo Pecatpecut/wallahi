@@ -26,7 +26,6 @@ class _GaransiFormPageState extends State<GaransiFormPage>
   Uint8List? imageBytes;
   bool _isSubmitting = false;
 
-  // ✅ Animasi konsisten dengan seluruh halaman
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -66,7 +65,7 @@ class _GaransiFormPageState extends State<GaransiFormPage>
   }
 
   // ─────────────────────────────────
-  // SNACKBAR — konsisten semua halaman
+  // SNACKBAR
   // ─────────────────────────────────
   void _showSnackBar(String message, {required bool isError}) {
     ScaffoldMessenger.of(context).clearSnackBars();
@@ -147,8 +146,8 @@ class _GaransiFormPageState extends State<GaransiFormPage>
       await service.createClaim(
         orderId: order['id'],
         userId: user.id,
-        title: selectedReason,                    // ✅ FIX: pisah title
-        description: _descController.text.trim(), // ✅ FIX: pisah description
+        title: selectedReason,                    
+        description: _descController.text.trim(), 
         imageUrl: uploadedUrl,
       );
 
@@ -444,7 +443,7 @@ class _GaransiFormPageState extends State<GaransiFormPage>
             ),
           ),
 
-          // Shield icon — garansi aktif
+          // Shield icon
           Container(
             width: 36,
             height: 36,
@@ -467,7 +466,7 @@ class _GaransiFormPageState extends State<GaransiFormPage>
   }
 
   // ────────────────────────────────────────────
-  // REASON LIST — icon per alasan + glow selected
+  // REASON LIST
   // ────────────────────────────────────────────
   Widget _buildReasonList(ThemeData theme, bool isDark) {
     return Column(
@@ -606,7 +605,7 @@ class _GaransiFormPageState extends State<GaransiFormPage>
   }
 
   // ────────────────────────────────────────────
-  // DESCRIPTION FIELD — konsisten EditProfilePage
+  // DESCRIPTION FIELD
   // ────────────────────────────────────────────
   Widget _buildDescriptionField(ThemeData theme, bool isDark) {
     return TextField(
@@ -644,7 +643,7 @@ class _GaransiFormPageState extends State<GaransiFormPage>
   }
 
   // ────────────────────────────────────────────
-  // UPLOAD AREA — konsisten PaymentPage
+  // UPLOAD AREA
   // ────────────────────────────────────────────
   Widget _buildUploadArea(ThemeData theme, bool isDark) {
     return GestureDetector(
@@ -804,7 +803,7 @@ class _GaransiFormPageState extends State<GaransiFormPage>
   }
 
   // ────────────────────────────────────────────
-  // BOTTOM BAR — konsisten semua halaman
+  // BOTTOM BAR
   // ────────────────────────────────────────────
   Widget _buildBottomBar(
       BuildContext context, ThemeData theme, bool isDark, Map order) {
@@ -892,7 +891,7 @@ class _GaransiFormPageState extends State<GaransiFormPage>
   }
 
   // ────────────────────────────────────────────
-  // SECTION LABEL — uppercase konsisten
+  // SECTION LABEL 
   // ────────────────────────────────────────────
   Widget _sectionLabel(String text, ThemeData theme) {
     return Text(

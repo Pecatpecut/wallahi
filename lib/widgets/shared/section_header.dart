@@ -20,7 +20,6 @@ class SectionHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // ✅ Label dengan garis aksen kiri
         Row(
           children: [
             Container(
@@ -51,7 +50,6 @@ class SectionHeader extends StatelessWidget {
           ],
         ),
 
-        // ✅ Action link
         if (actionText != null)
           GestureDetector(
             onTap: onTap,

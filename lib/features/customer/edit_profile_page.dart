@@ -23,7 +23,6 @@ class _EditProfilePageState extends State<EditProfilePage>
   bool _isSaving = false;
   bool _isPasswordVisible = false;
 
-  // ✅ Animasi fade + slide konsisten dengan Login & Register
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -77,7 +76,6 @@ class _EditProfilePageState extends State<EditProfilePage>
         _isLoading = false;
       });
 
-      // Animasi mulai setelah data masuk
       _animController.forward();
     } catch (e) {
       if (!mounted) return;
@@ -89,7 +87,7 @@ class _EditProfilePageState extends State<EditProfilePage>
   Future<void> _saveChanges() async {
     FocusScope.of(context).unfocus();
 
-    // ✅ Validasi tidak boleh kosong
+    // Validasi kosong
     if (_nameController.text.trim().isEmpty ||
         _emailController.text.trim().isEmpty ||
         _phoneController.text.trim().isEmpty) {
@@ -97,14 +95,14 @@ class _EditProfilePageState extends State<EditProfilePage>
       return;
     }
 
-    // ✅ Validasi email pakai regex
+    // Validasi email
     final emailRegex = RegExp(r'^[\w\.-]+@[\w\.-]+\.\w{2,}$');
     if (!emailRegex.hasMatch(_emailController.text.trim())) {
       _showSnackBar('Format email tidak valid', isError: true);
       return;
     }
 
-    // ✅ Validasi phone
+    // Validasi phone
     final phone = _phoneController.text.trim();
     if (!phone.startsWith('08') || phone.length < 10) {
       _showSnackBar(
@@ -114,7 +112,7 @@ class _EditProfilePageState extends State<EditProfilePage>
       return;
     }
 
-    // ✅ Validasi password jika diisi
+    // Validasi password
     if (_passwordController.text.isNotEmpty &&
         _passwordController.text.trim().length < 6) {
       _showSnackBar('Password baru minimal 6 karakter', isError: true);
@@ -327,7 +325,6 @@ class _EditProfilePageState extends State<EditProfilePage>
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    // ✅ Edit badge di pojok kanan bawah
                                     Positioned(
                                       bottom: 10,
                                       right: 10,
@@ -356,7 +353,6 @@ class _EditProfilePageState extends State<EditProfilePage>
 
                                 const SizedBox(height: 8),
 
-                                // ✅ Nama & email live update saat mengetik
                                 Text(
                                   _nameController.text.isNotEmpty
                                       ? _nameController.text
@@ -540,7 +536,7 @@ class _EditProfilePageState extends State<EditProfilePage>
   }
 
   // ─────────────────────────────────────
-  // WIDGET HELPERS — konsisten 100%
+  // WIDGET HELPERS
   // ─────────────────────────────────────
 
   Widget _label(String text) {
@@ -579,7 +575,6 @@ class _EditProfilePageState extends State<EditProfilePage>
         fontSize: 14,
         color: theme.colorScheme.onSurface,
       ),
-      // ✅ Live update nama & email di header saat mengetik
       onChanged: isPassword ? null : (_) => setState(() {}),
       decoration: InputDecoration(
         hintText: hint,

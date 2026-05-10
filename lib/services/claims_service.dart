@@ -3,11 +3,11 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class ClaimsService {
   final supabase = Supabase.instance.client;
 
-  /// 🔥 CREATE CLAIM
+  // CREATE CLAIM
   Future<void> createClaim({
   required String orderId,
   required String userId,
-  required String title,       // ✅ FIX: pisah jadi 2 param
+  required String title,     
   required String description,
   String? imageUrl,
 }) async {
@@ -20,7 +20,7 @@ class ClaimsService {
     "status": "pending",
   });
 }
-  /// 🔥 GET USER CLAIMS
+  // GET USER CLAIMS
 Future<List<Map<String, dynamic>>> getUserClaims() async {
   final user = supabase.auth.currentUser;
   if (user == null) return [];
@@ -52,7 +52,7 @@ Future<List<Map<String, dynamic>>> getUserClaims() async {
   return List<Map<String, dynamic>>.from(data);
 }
 
-/// 🔥 GET ALL CLAIMS (ADMIN - FIX TOTAL)
+// GET ALL CLAIMS
 Future<List<Map<String, dynamic>>> getClaims() async {
   try {
     final data = await supabase
@@ -74,17 +74,17 @@ Future<List<Map<String, dynamic>>> getClaims() async {
         ''')
         .order('created_at', ascending: false);
 
-    print("🔥 CLAIMS DATA: $data");
+    print("CLAIMS DATA: $data");
 
     return List<Map<String, dynamic>>.from(data);
   } catch (e) {
-    print("❌ ERROR GET CLAIMS: $e");
+    print("ERROR GET CLAIMS: $e");
 
     return [];
   }
 }
 
-  /// 🔥 GET CLAIM BY ORDER
+  // GET CLAIM BY ORDER
   Future<List<Map<String, dynamic>>> getClaimsByOrder(
       String orderId) async {
     final data = await supabase
@@ -95,7 +95,7 @@ Future<List<Map<String, dynamic>>> getClaims() async {
     return List<Map<String, dynamic>>.from(data);
   }
 
-  /// 🔥 UPDATE STATUS (APPROVE / REJECT)
+  // UPDATE STATUS
   Future<void> updateClaimStatus(String id, String status) async {
     await supabase
         .from('claims')
@@ -103,7 +103,7 @@ Future<List<Map<String, dynamic>>> getClaims() async {
         .eq('id', id);
   }
 
-  /// 🔥 UPDATE CLAIM (STATUS + ADMIN NOTE)
+  // UPDATE CLAIM
 Future<void> updateClaim({
   required String id,
   required String status,

@@ -90,7 +90,6 @@ class _OrderPageState extends State<OrderPage>
       final isActive = status == 'approved' && remaining > 0;
       final isPending = status == 'pending';
       final isExpired = status == 'approved' && remaining == 0;
-      // ✅ Tambah rejected
       final isRejected = status == 'rejected';
 
       final matchFilter = _selectedFilter == 'all' ||
@@ -163,7 +162,7 @@ class _OrderPageState extends State<OrderPage>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              // ── Header (fixed, tidak scroll)
+              // ── Header
               Padding(
                 padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
                 child: Column(
@@ -311,7 +310,7 @@ class _OrderPageState extends State<OrderPage>
 
                     const SizedBox(height: 12),
 
-                    // ✅ Filter chips — SingleChildScrollView agar tidak overflow
+                    // Filter chips
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
@@ -328,7 +327,6 @@ class _OrderPageState extends State<OrderPage>
                           _filterChip('expired', 'Expired', Colors.redAccent,
                               theme, isDark),
                           const SizedBox(width: 8),
-                          // ✅ Tab Rejected untuk user
                           _filterChip('rejected', 'Ditolak',
                               Colors.grey, theme, isDark),
                         ],
@@ -340,7 +338,7 @@ class _OrderPageState extends State<OrderPage>
                 ),
               ),
 
-              // ── List content (scrollable)
+              // ── List content
               Expanded(
                 child: _isLoading
                     ? Center(

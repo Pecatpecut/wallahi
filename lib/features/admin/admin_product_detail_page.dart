@@ -17,7 +17,6 @@ class _AdminProductDetailPageState extends State<AdminProductDetailPage>
   late Map product;
   bool _isDeletingProduct = false;
 
-  // ✅ Animasi konsisten dengan seluruh halaman
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -57,7 +56,7 @@ class _AdminProductDetailPageState extends State<AdminProductDetailPage>
   }
 
   // ─────────────────────────────────
-  // FORMAT HARGA: 150000 → 150.000
+  // FORMAT HARGA
   // ─────────────────────────────────
   String _formatPrice(dynamic price) {
     if (price == null) return '-';
@@ -99,7 +98,7 @@ class _AdminProductDetailPageState extends State<AdminProductDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // DELETE PRODUCT — dengan konfirmasi dialog
+  // DELETE PRODUCT
   // ────────────────────────────────────────────
   Future<void> _deleteProduct() async {
     final confirmed = await _showConfirmDialog(
@@ -128,7 +127,7 @@ class _AdminProductDetailPageState extends State<AdminProductDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // DELETE VARIANT — dengan konfirmasi dialog
+  // DELETE VARIANT
   // ────────────────────────────────────────────
   Future<void> _deleteVariant(String id) async {
     final confirmed = await _showConfirmDialog(
@@ -158,7 +157,7 @@ class _AdminProductDetailPageState extends State<AdminProductDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // REUSABLE CONFIRM DIALOG — glassmorphism
+  // REUSABLE CONFIRM DIALOG
   // ────────────────────────────────────────────
   Future<bool?> _showConfirmDialog({
     required String title,
@@ -663,7 +662,7 @@ class _AdminProductDetailPageState extends State<AdminProductDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // VARIANT CARD — tap edit, long press delete
+  // VARIANT CARD
   // ────────────────────────────────────────────
   Widget _buildVariantCard(
       BuildContext context, Map v, ThemeData theme, bool isDark) {
@@ -909,7 +908,7 @@ class _AdminProductDetailPageState extends State<AdminProductDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // BOTTOM BAR — tambah variant
+  // BOTTOM BAR
   // ────────────────────────────────────────────
   Widget _buildBottomBar(ThemeData theme, bool isDark) {
     return Container(
@@ -979,7 +978,7 @@ class _AdminProductDetailPageState extends State<AdminProductDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // SECTION LABEL — uppercase konsisten
+  // SECTION LABEL
   // ────────────────────────────────────────────
   Widget _sectionLabel(String text, ThemeData theme) {
     return Text(

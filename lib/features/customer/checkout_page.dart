@@ -13,7 +13,6 @@ class _CheckoutPageState extends State<CheckoutPage>
   final TextEditingController _emailController = TextEditingController();
   bool _isEmailValid = true;
 
-  // ✅ Animasi konsisten dengan EditProfilePage & ProductDetailPage
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -49,7 +48,7 @@ class _CheckoutPageState extends State<CheckoutPage>
   }
 
   // ─────────────────────────────────
-  // FORMAT HARGA: 150000 → 150.000
+  // FORMAT HARGA
   // ─────────────────────────────────
   String _formatPrice(dynamic price) {
     if (price == null) return '-';
@@ -503,7 +502,7 @@ class _CheckoutPageState extends State<CheckoutPage>
   }
 
   // ────────────────────────────────────────────
-  // EMAIL FIELD — konsisten dengan EditProfilePage
+  // EMAIL FIELD
   // ────────────────────────────────────────────
   Widget _buildEmailField(ThemeData theme, bool isDark) {
     return TextField(
@@ -662,7 +661,7 @@ class _CheckoutPageState extends State<CheckoutPage>
   }
 
   // ────────────────────────────────────────────
-  // BOTTOM BAR — konsisten dengan ProductDetailPage
+  // BOTTOM BAR
   // ────────────────────────────────────────────
   Widget _buildBottomBar(
     BuildContext context,
@@ -772,7 +771,7 @@ class _CheckoutPageState extends State<CheckoutPage>
   }
 
   // ────────────────────────────────────────────
-  // SECTION LABEL — uppercase konsisten
+  // SECTION LABEL
   // ────────────────────────────────────────────
   Widget _sectionLabel(String text, ThemeData theme) {
     return Text(

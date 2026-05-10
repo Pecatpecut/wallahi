@@ -23,7 +23,6 @@ class _HomePageState extends State<HomePage>
   bool _isLoading = true;
   String? _errorMessage;
 
-  // ✅ Animasi konsisten
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -66,7 +65,6 @@ class _HomePageState extends State<HomePage>
       if (!mounted) return;
       setState(() => _userName = data['name'] ?? "User");
     } catch (_) {
-      // Gagal fetch nama tidak perlu crash halaman
     }
   }
 
@@ -97,7 +95,6 @@ class _HomePageState extends State<HomePage>
     final variants = product['product_variants'] ?? [];
     if (variants.isEmpty) return "N/A";
     final price = variants[0]['price'] ?? 0;
-    // ✅ FIX: format dengan separator ribuan
     final formatted = NumberFormat('#,###', 'id_ID').format(price);
     return "Rp $formatted";
   }
@@ -360,7 +357,6 @@ class _HomePageState extends State<HomePage>
 
         const SizedBox(height: 20),
 
-        // ✅ Banner promo
         _buildPromoBanner(theme, isDark),
       ],
     );

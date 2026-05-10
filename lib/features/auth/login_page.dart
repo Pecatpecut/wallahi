@@ -226,7 +226,6 @@ class _LoginPageState extends State<LoginPage>
                         ],
                       ),
 
-                      // ✅ Jarak atas adaptif — iPhone SE lebih kecil
                       SizedBox(height: screenHeight < 700 ? 24 : 48),
 
                       // ── LOGO ──
@@ -502,7 +501,7 @@ class _LoginPageState extends State<LoginPage>
       controller: controller,
       obscureText: isPassword && !_isPasswordVisible,
       keyboardType: inputType,
-      inputFormatters: [NoEmojiFormatter()], // ✅ FIX: block emoji
+      inputFormatters: [NoEmojiFormatter()],
       style: TextStyle(fontSize: 14, color: theme.colorScheme.onSurface),
       decoration: InputDecoration(
         hintText: hint,

@@ -16,7 +16,6 @@ class _AdminOrderDetailPageState extends State<AdminOrderDetailPage>
 
   bool _isProcessing = false;
 
-  // ✅ Animasi konsisten
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -45,7 +44,7 @@ class _AdminOrderDetailPageState extends State<AdminOrderDetailPage>
     super.dispose();
   }
 
-  // ✅ SnackBar konsisten
+  // SnackBar
   void _showSnackBar(String message, {required bool isError}) {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -71,7 +70,7 @@ class _AdminOrderDetailPageState extends State<AdminOrderDetailPage>
     );
   }
 
-  // ✅ Approve dialog — konsisten dengan AdminOrderPage
+  // Approve dialog
   void _approveDialog(Map data) {
     final emailController = TextEditingController();
     final passController = TextEditingController();
@@ -308,7 +307,7 @@ class _AdminOrderDetailPageState extends State<AdminOrderDetailPage>
     );
   }
 
-  // ✅ Reject dengan konfirmasi dialog
+  // Reject dialog
   void _rejectDialog(Map data) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
@@ -566,7 +565,7 @@ class _AdminOrderDetailPageState extends State<AdminOrderDetailPage>
                       children: [
 
                         // ─────────────────────
-                        // HEADER CARD — status + produk
+                        // HEADER CARD
                         // ─────────────────────
                         _sectionCard(
                           isDark: isDark,
@@ -611,7 +610,7 @@ class _AdminOrderDetailPageState extends State<AdminOrderDetailPage>
                         const SizedBox(height: 16),
 
                         // ─────────────────────
-                        // INFO PRODUK (2 kolom)
+                        // INFO PRODUK
                         // ─────────────────────
                         Row(
                           children: [
@@ -718,7 +717,6 @@ class _AdminOrderDetailPageState extends State<AdminOrderDetailPage>
                                     data['payment_proof'],
                                     width: double.infinity,
                                     fit: BoxFit.cover,
-                                    // ✅ Error builder yang lebih baik
                                     errorBuilder:
                                         (context, error, stackTrace) =>
                                             Container(
@@ -766,7 +764,7 @@ class _AdminOrderDetailPageState extends State<AdminOrderDetailPage>
                         ],
 
                         // ─────────────────────
-                        // ACCOUNT INFO (jika sudah approved)
+                        // ACCOUNT INFO
                         // ─────────────────────
                         if (isApproved &&
                             data['account_email'] != null) ...[
@@ -829,7 +827,7 @@ class _AdminOrderDetailPageState extends State<AdminOrderDetailPage>
                         ],
 
                         // ─────────────────────
-                        // ACTION BUTTONS (hanya pending)
+                        // ACTION BUTTONS
                         // ─────────────────────
                         if (isPending) ...[
                           AnimatedSwitcher(

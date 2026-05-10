@@ -3,7 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class AuthService {
   final supabase = Supabase.instance.client;
 
-  /// REGISTER
+  // REGISTER
   Future<void> register({
     required String name,
     required String email,
@@ -31,7 +31,7 @@ class AuthService {
     });
   }
 
-  /// LOGIN
+  // LOGIN
   Future<String> login({
     required String email,
     required String password,
@@ -56,7 +56,7 @@ class AuthService {
     return data['role'];
   }
 
-  /// LOGOUT
+  // LOGOUT
   Future<void> logout() async {
     await supabase.auth.signOut();
   }

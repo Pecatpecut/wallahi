@@ -9,7 +9,7 @@ class CustomBottomNavbar extends StatelessWidget {
   });
 
   void _onTap(BuildContext context, int index) {
-    if (index == currentIndex) return; // ✅ Hindari push halaman yang sama
+    if (index == currentIndex) return; 
     switch (index) {
       case 0:
         Navigator.pushNamedAndRemoveUntil(
@@ -34,7 +34,6 @@ class CustomBottomNavbar extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        // ✅ Gradient card konsisten dengan halaman lain
         color: isDark
             ? const Color(0xFF111124).withValues(alpha: 0.95)
             : Colors.white.withValues(alpha: 0.95),
@@ -157,7 +156,6 @@ class CustomBottomNavbar extends StatelessWidget {
                   ? (isDark ? Colors.black : Colors.white)
                   : theme.colorScheme.onSurface.withValues(alpha: 0.4),
             ),
-            // ✅ Label hanya muncul saat aktif (animated expand)
             AnimatedSize(
               duration: const Duration(milliseconds: 250),
               curve: Curves.easeOut,

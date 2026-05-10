@@ -26,7 +26,6 @@ String? _newPaymentProofName;
   bool _isResubmitting = false;
   Map? _userData;
 
-  // ✅ FIX UTAMA: guard agar didChangeDependencies tidak reset form setiap rebuild
   bool _didInit = false;
 
 
@@ -52,7 +51,7 @@ String? _newPaymentProofName;
 
   @override
   void dispose() {
-    _animController.dispose(); // ✅ FIX: bebaskan memory AnimationController
+    _animController.dispose(); 
     super.dispose();
   }
 
@@ -60,13 +59,8 @@ String? _newPaymentProofName;
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    
-
-    // ✅ FIX: Hanya jalankan sekali — tanpa guard ini, setiap setState
-    // akan memanggil didChangeDependencies lagi dan mereset isi form
     if (_didInit) return;
     _didInit = true;
-
 
     final data = ModalRoute.of(context)?.settings.arguments as Map?;
     if (data != null) {
@@ -75,8 +69,6 @@ String? _newPaymentProofName;
 
     }
   }
-
-
 
   Future<void> _fetchSubscription(String orderId) async {
     try {
@@ -110,7 +102,6 @@ String? _newPaymentProofName;
     if (!mounted) return;
     setState(() => _userData = data);
   } catch (e) {
-    // silent fail, tetap tampil '-'
   }
 }
 
@@ -126,7 +117,6 @@ String? _newPaymentProofName;
     final userId = data['user_id'];
     final fileName = '${userId}_${DateTime.now().millisecondsSinceEpoch}.jpg';
 
-    // Upload foto baru ke storage
     await supabase.storage
         .from('payment-proofs')
         .uploadBinary(fileName, _newPaymentProofBytes!);
@@ -211,7 +201,7 @@ String? _newPaymentProofName;
     final duration = data['duration_days'] ?? 30;
     final now = DateTime.now();
 
-    // ✅ FIX: Gunakan end_date dari subscription, bukan created_at order
+    
     final subEndRaw = subscription?['end_date'];
     final subStartRaw = subscription?['start_date'];
     final endDate = subEndRaw != null
@@ -241,7 +231,7 @@ String? _newPaymentProofName;
       backgroundColor: isDark ? AppConstants.darkBg1 : Colors.white,
       body: Container(
         width: double.infinity,
-        // ✅ FIX: tidak pakai AppConstants.darkBg1/darkBg2
+        
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: isDark
@@ -478,7 +468,7 @@ String? _newPaymentProofName;
 
                               const SizedBox(height: 20),
 
-                              // Klaim garansi (expired)
+                              // Klaim garansi
                               if (isExpired) ...[
                                 _actionButton(
                                   label: "Klaim Garansi",
@@ -495,7 +485,7 @@ String? _newPaymentProofName;
                                 const SizedBox(height: 12),
                               ],
 
-                              // Hubungi support (non-rejected)
+                              // Hubungi support
                               if (!isRejected)
                                 _actionButton(
                                   label: "Hubungi Support",
@@ -507,7 +497,6 @@ String? _newPaymentProofName;
                                     const phone = "6285349661585";   // tanpa tanda +
                                     final message = "Halo admin, saya butuh bantuan untuk order $productName";
 
-                                    // Pakai scheme WhatsApp langsung (lebih stabil)
                                     final url = Uri.parse(
                                       "https://wa.me/$phone?text=${Uri.encodeComponent(message)}",
                                     );
@@ -832,7 +821,6 @@ String? _newPaymentProofName;
                     ? theme.colorScheme.primary.withValues(alpha: 0.5)
                     : theme.colorScheme.onSurface.withValues(alpha: 0.15),
                 width: 1.5,
-                // ignore: deprecated_member_use
                 strokeAlign: BorderSide.strokeAlignInside,
               ),
             ),

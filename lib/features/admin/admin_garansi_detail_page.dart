@@ -18,7 +18,6 @@ class _AdminGaransiDetailPageState extends State<AdminGaransiDetailPage>
   bool _isApproving = false;
   bool _isRejecting = false;
 
-  // ✅ Animasi konsisten dengan seluruh halaman
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
   late Animation<Offset> _slideAnim;
@@ -124,7 +123,7 @@ class _AdminGaransiDetailPageState extends State<AdminGaransiDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // RESULT DIALOG — glassmorphism konsisten
+  // RESULT DIALOG
   // ────────────────────────────────────────────
   void _showResultDialog({required bool isApproved}) {
     final theme = Theme.of(context);
@@ -746,7 +745,7 @@ class _AdminGaransiDetailPageState extends State<AdminGaransiDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // NOTE FIELD — konsisten EditProfilePage
+  // NOTE FIELD
   // ────────────────────────────────────────────
   Widget _buildNoteField(ThemeData theme, bool isDark) {
     return TextField(
@@ -826,7 +825,7 @@ class _AdminGaransiDetailPageState extends State<AdminGaransiDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // BOTTOM ACTION BAR — Approve & Reject
+  // BOTTOM ACTION BAR
   // ────────────────────────────────────────────
   Widget _buildBottomBar(
       ThemeData theme, bool isDark, String claimId) {
@@ -968,7 +967,7 @@ class _AdminGaransiDetailPageState extends State<AdminGaransiDetailPage>
   }
 
   // ────────────────────────────────────────────
-  // SECTION LABEL — uppercase konsisten
+  // SECTION LABEL
   // ────────────────────────────────────────────
   Widget _sectionLabel(String text, ThemeData theme) {
     return Text(

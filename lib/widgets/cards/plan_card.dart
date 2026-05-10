@@ -43,7 +43,7 @@ class PlanCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              /// 🔥 TITLE + CHECK
+              // TITLE + CHECK
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -63,7 +63,7 @@ class PlanCard extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              /// 🔥 FEATURES
+              // FEATURES
               ...features.map((f) => Padding(
                     padding: const EdgeInsets.only(bottom: 4),
                     child: Text(
@@ -77,7 +77,7 @@ class PlanCard extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              /// 🔥 PRICE
+              // PRICE
               Text(
                 price,
                 style: TextStyle(

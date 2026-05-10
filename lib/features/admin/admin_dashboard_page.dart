@@ -63,7 +63,6 @@ class _AdminDashboardPageState extends State<AdminDashboardPage>
       final users = await _adminService.getTotalUsers();
       final income = await _adminService.getTotalIncome();
       final monthly = await _adminService.getMonthlyIncome();
-      // ✅ Fetch pending orders untuk notif badge
       final pending = await _adminService.getPendingOrders();
 
       if (!mounted) return;
@@ -93,7 +92,6 @@ class _AdminDashboardPageState extends State<AdminDashboardPage>
     ).format(value);
   }
 
-  // ✅ Format ringkas untuk chart tooltip
   String _formatRupiahShort(int value) {
     if (value >= 1000000) {
       return 'Rp ${(value / 1000000).toStringAsFixed(1)}jt';
@@ -225,7 +223,6 @@ class _AdminDashboardPageState extends State<AdminDashboardPage>
 
                             const SizedBox(height: 12),
 
-                            // ✅ 2 kolom kecil
                             Row(
                               children: [
                                 Expanded(
@@ -373,7 +370,7 @@ class _AdminDashboardPageState extends State<AdminDashboardPage>
           ),
         ),
         const Spacer(),
-        // ✅ Refresh button
+        // Refresh button
         GestureDetector(
           onTap: _fetchData,
           child: Container(
@@ -416,7 +413,7 @@ class _AdminDashboardPageState extends State<AdminDashboardPage>
   Widget _buildQuickActions(ThemeData theme, bool isDark) {
     return Row(
       children: [
-        // ✅ Manage Orders — dengan badge pending
+        // Manage Orders
         Expanded(
           child: GestureDetector(
             onTap: () => Navigator.pushNamed(context, '/admin-order'),
@@ -844,7 +841,7 @@ class _AdminDashboardPageState extends State<AdminDashboardPage>
     );
   }
 
-  // ✅ Recent activity section baru
+  // Recent activity section
   Widget _buildRecentSection(ThemeData theme, bool isDark) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

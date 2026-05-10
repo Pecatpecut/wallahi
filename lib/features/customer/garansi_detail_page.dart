@@ -32,7 +32,6 @@ class _GaransiDetailPageState extends State<GaransiDetailPage>
     ).animate(
       CurvedAnimation(parent: _animController, curve: Curves.easeOut),
     );
-    // ✅ Animasi langsung saat halaman dibuka
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _animController.forward();
     });
@@ -63,7 +62,6 @@ class _GaransiDetailPageState extends State<GaransiDetailPage>
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          // ✅ Gradient background identik dengan EditProfilePage
           gradient: LinearGradient(
             colors: isDark
                 ? [
@@ -319,7 +317,7 @@ class _GaransiDetailPageState extends State<GaransiDetailPage>
           ),
           const SizedBox(height: 14),
 
-          // ✅ Product mini card
+          // Product mini card
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(

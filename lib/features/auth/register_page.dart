@@ -20,10 +20,8 @@
 
     bool _isLoading = false;
 
-    // ✅ FIX: Pisah visibility per field agar tidak konflik
     bool _isPasswordVisible = false;
 
-    // ✅ FIX: Validasi email lebih proper pakai regex
     bool _isValidEmail(String email) {
       final regex = RegExp(r'^[\w\.-]+@[\w\.-]+\.\w{2,}$');
       return regex.hasMatch(email);
@@ -33,7 +31,6 @@
       return phone.startsWith("08") && phone.length >= 10 && phone.length <= 15;
     }
 
-    // ✅ FIX: Animasi fade-in saat halaman muncul
     late AnimationController _animController;
     late Animation<double> _fadeAnim;
     late Animation<Offset> _slideAnim;
@@ -78,7 +75,7 @@
         return;
       }
 
-      // ✅ FIX: Validasi email pakai regex
+      // Validasi email
       if (!_isValidEmail(_emailController.text.trim())) {
         _showSnackBar("Format email tidak valid", isError: true);
         return;
@@ -93,7 +90,7 @@
         return;
       }
 
-      // Validasi password minimal 6 karakter
+      // Validasi password
       if (_passwordController.text.trim().length < 6) {
         _showSnackBar("Password minimal 6 karakter", isError: true);
         return;
@@ -120,7 +117,6 @@
         );
       } catch (e) {
         if (!mounted) return;
-        // ✅ FIX: Hapus print() — tampilkan error ke user saja
         _showSnackBar(e.toString().replaceAll("Exception: ", ""), isError: true);
       } finally {
         if (mounted) setState(() => _isLoading = false);
@@ -156,7 +152,6 @@
       final isDark = theme.brightness == Brightness.dark;
 
       return Scaffold(
-        // ✅ Transparan agar gradient terlihat sampai status bar
         backgroundColor: isDark ? AppConstants.darkBg1 : Colors.white,
         body: Container(
           width: double.infinity,
@@ -198,7 +193,6 @@
                         // ─────────────────────────────
                         Row(
                           children: [
-                            // ✅ Tombol back yang proper
                             if (Navigator.canPop(context))
                               GestureDetector(
                                 onTap: () => Navigator.pop(context),
@@ -241,7 +235,7 @@
                         const SizedBox(height: 32),
 
                         // ─────────────────────────────
-                        // LOGO — lebih impactful
+                        // LOGO
                         // ─────────────────────────────
                         Stack(
                           alignment: Alignment.center,
@@ -548,7 +542,6 @@
             fontSize: 13,
             color: theme.colorScheme.onSurface.withValues(alpha: 0.35),
           ),
-          // ✅ Icon prefix per field
           prefixIcon: Icon(
             icon,
             size: 18,
@@ -592,7 +585,6 @@
       );
     }
 
-    // ✅ FIX: withValues bukan withOpacity
     Widget _button(ThemeData theme, bool isDark) {
       return GestureDetector(
         onTap: _register,

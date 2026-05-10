@@ -20,8 +20,8 @@ import '../features/customer/garansiformpage.dart';
 import '../features/customer/rules_page.dart';
 import '../features/customer/social_page.dart';
 
-// ADMIN (NEW SYSTEM)
-import '../features/admin/admin_main_page.dart'; // 🔥 INI ROOT BARU
+// ADMIN
+import '../features/admin/admin_main_page.dart';
 import '../features/admin/admin_order_page.dart';
 import '../features/admin/admin_order_detail_page.dart';
 import '../features/admin/admin_product_detail_page.dart';
@@ -34,11 +34,11 @@ import '../features/admin/admin_garansi_detail_page.dart';
 class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
 
-    /// 🔐 AUTH
+    /// AUTH
     '/login': (context) => const LoginPage(),
     '/register': (context) => const RegisterPage(),
 
-    /// 👤 CUSTOMER
+    /// CUSTOMER
     '/home': (context) => const HomePage(),
     '/products': (context) => const ProductPage(),
     '/detail': (context) => const ProductDetailPage(),
@@ -54,8 +54,8 @@ class AppRoutes {
     '/social': (context) => const SocialPage(),
     '/garansi-form': (context) => const GaransiFormPage(),
 
-    /// 🛠 ADMIN (UPDATED)
-    '/admin': (context) => const AdminMainPage(), // 🔥 FIX DI SINI
+    /// ADMIN
+    '/admin': (context) => const AdminMainPage(),
 
     '/admin-order': (context) => const AdminOrderPage(),
     '/admin-order-detail': (context) => const AdminOrderDetailPage(),
